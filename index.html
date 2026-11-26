@@ -334,41 +334,63 @@ function toggleMusik() {
 </script>
 <style>
 body {
-  background: linear-gradient(180deg, #0f0c29, #302b63, #24243e) !important;
-  background-attachment: fixed;
-  color: white !important;
+  background: #020617 !important;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(56,189,248,0.25), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(30,58,138,0.6), transparent 50%),
+    linear-gradient(180deg, #020617, #0a1a4d, #082f49) !important;
+  background-attachment: fixed !important;
+  color: #a5f3fc !important;
+  font-family: sans-serif !important;
 }
-h1, h2, p {
-  text-shadow: 0 0 15px #ff6ec4, 0 0 25px #7873f5 !important;
+/* Kotak foto jadi kaca biru gelap kayak di foto */
+div {
+  background: rgba(10, 25, 70, 0.75) !important;
+  border: 1px solid rgba(125, 211, 252, 0.6) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 0 25px rgba(56,189,248,0.35) !important;
+  backdrop-filter: blur(10px) !important;
+  color: #a5f3fc !important;
+}
+h1, h2, h3, p, span, a {
+  color: #a5f3fc !important;
+  text-shadow: 0 0 10px #38bdf8 !important;
+}
+img {
+  border-radius: 15px !important;
+  border: 1px solid #7dd3fc !important;
+  box-shadow: 0 0 15px rgba(56,189,248,0.5) !important;
 }
 button {
-  background: linear-gradient(45deg, #ff6ec4, #7873f5) !important;
-  border: none !important;
+  background: #0284c7 !important;
   color: white !important;
-  box-shadow: 0 0 20px #ff6ec4 !important;
+  border-radius: 20px !important;
+  border: none !important;
+  box-shadow: 0 0 15px #38bdf8 !important;
 }
 </style>
 
 <script>
-// Bintang jatuh
-setInterval(() => {
-  const b = document.createElement('div');
-  b.innerHTML = '✨';
-  b.style.position = 'fixed';
-  b.style.left = Math.random() * 100 + 'vw';
-  b.style.top = '-20px';
-  b.style.fontSize = (Math.random() * 20 + 10) + 'px';
-  b.style.zIndex = '9999';
-  b.style.pointerEvents = 'none';
-  document.body.appendChild(b);
+// Bintang + lampion jatuh kayak di foto
+function buatBintang(){
+  const s = document.createElement('div');
+  s.innerHTML = Math.random() > 0.5 ? '⭐' : '✨';
+  s.style.position = 'fixed';
+  s.style.left = Math.random() * 100 + 'vw';
+  s.style.top = '-20px';
+  s.style.fontSize = (Math.random() * 10 + 8) + 'px';
+  s.style.zIndex = '9999';
+  s.style.pointerEvents = 'none';
+  s.style.opacity = '0.9';
+  document.body.appendChild(s);
   let y = 0;
   let j = setInterval(() => {
-    y += 3;
-    b.style.top = y + 'px';
-    b.style.transform = 'rotate(' + y + 'deg)';
-    if (y > window.innerHeight) { b.remove(); clearInterval(j); }
-  }, 20);
-}, 400);
+    y += 1.5;
+    s.style.top = y + 'px';
+    if (y > window.innerHeight) { s.remove(); clearInterval(j); }
+  }, 25);
+}
+setInterval(buatBintang, 500);
 </script>
 </body>
 </html>  
